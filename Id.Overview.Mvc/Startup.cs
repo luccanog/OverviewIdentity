@@ -12,7 +12,7 @@ using Id.Overview.Mvc.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 namespace Id.Overview.Mvc
 {
     public class Startup
@@ -28,7 +28,7 @@ namespace Id.Overview.Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
+                options.UseNpgsql(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
